@@ -12,9 +12,6 @@ public class AccionRegistro implements Accion{
         for (Juguete juguete: Menu.getJugetes()) {
             System.out.println(juguete);
         }
-
-
-
     }
 
     @Override

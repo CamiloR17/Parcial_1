@@ -45,6 +45,11 @@ public class Peluche implements Juguete{
         return new Peluche(this);
     }
 
+    @Override
+    public void setId(Integer index) {
+        this.id = index;
+    }
+
     public static Peluche.PelucheBuilder builder() {return new Peluche.PelucheBuilder();}
     public static class PelucheBuilder {
 
@@ -80,11 +85,11 @@ public class Peluche implements Juguete{
 
     @Override
     public String toString() {
-        return "Peluche{" +
-                "id=" + id +
-                ", color='" + color + '\'' +
-                ", materiaExterior='" + materiaExterior + '\'' +
-                ", relleno='" + relleno + '\'' +
-                '}';
+        return "Peluche |" +
+                " id: " + id +
+                " | color: " + color +
+                " | materiaExterior: " + materiaExterior +
+                " | relleno: " + relleno +
+                " |";
     }
 }

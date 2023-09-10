@@ -1,13 +1,9 @@
 package src.strategy;
 
-import src.factory.Carrito;
 import src.factory.Juguete;
-import src.factory.Peluche;
 import src.singleton.Menu;
 import src.utils.KeyBoard;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.InputMismatchException;
 
 public class AccionClonar implements Accion{
 
@@ -15,14 +11,25 @@ public class AccionClonar implements Accion{
     public void aplicar() {
         System.out.println("\n\t   -----------------------");
         System.out.println("\t\tCLONACIÓN DE JUGUETES\n");
-        int iter = KeyBoard.Int("ingrese el numero de clones deseados");
-        int nc = KeyBoard.Int("ingrese el id del juguete a clonar");
+        int iter, nc;
+        do {
+            try {
+                iter = KeyBoard.Int("\t> Numero de clones deseados");
+                nc = KeyBoard.Int("\t> Ingrese el id del juguete a clonar");
+            }catch (InputMismatchException e) {
+                System.out.println("\n\t\t * ERROR - Digite números *\n");
+                continue;
+            }
+            break;
+        }while (true);
+
+
         for (int i = 0; i < iter; i++) {
             Juguete juguete = Menu.getJugetes().get(nc - 1).clone();
             Menu.getJugetes().add(juguete);
         }
 
-
+        System.out.println("\n\t\t= CLONACIÓN EXITOSA =");
     }
 
     @Override

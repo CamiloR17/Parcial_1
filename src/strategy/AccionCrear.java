@@ -7,6 +7,8 @@ import src.factory.Juguete;
 import src.singleton.Menu;
 import src.utils.KeyBoard;
 
+import java.util.InputMismatchException;
+
 public class AccionCrear implements Accion{
     CreadorJuguete creadorJugueteC = new CreadorCarrito();
     CreadorJuguete creadorJugueteP = new CreadorPeluche();
@@ -16,7 +18,18 @@ public class AccionCrear implements Accion{
 
         System.out.println("\n\t   ---------------------");
         System.out.println("\t\tCREACIÓN DE JUGUETES\n");
-        int tipoJuguete = KeyBoard.Int("[1] -> Carrito   |   [2] -> Peluche\n  ");
+
+        int tipoJuguete;
+        do {
+            try {
+                tipoJuguete = KeyBoard.Int("[1] -> Carrito   |   [2] -> Peluche\n  ");
+            }catch (InputMismatchException e) {
+                System.out.println("\n\t\t * ERROR - Digite un numero *\n");
+                continue;
+            }
+            break;
+        }while (true);
+
         System.out.println();
         if (tipoJuguete == 1) {
             Juguete juguete = crearJuguete(creadorJugueteC);
@@ -27,7 +40,7 @@ public class AccionCrear implements Accion{
 
             Menu.getJugetes().add(juguete);
         }else {
-            System.out.println("\n\t == Opción erronea ==  ");
+            System.out.println("\n\t\t * Opción desconocida *  ");
         }
 
 

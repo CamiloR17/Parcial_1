@@ -42,6 +42,11 @@ public class Carrito implements Juguete{
     }
 
     @Override
+    public void setId(Integer index) {
+        this.id = index;
+    }
+
+    @Override
     public Carrito clone() {
         return new Carrito(this);
     }
@@ -81,11 +86,11 @@ public class Carrito implements Juguete{
 
     @Override
     public String toString() {
-        return "Carrito{" +
-                "id=" + id +
-                ", color='" + color + '\'' +
-                ", marca='" + marca + '\'' +
-                ", numPuertas='" + numPuertas + '\'' +
-                '}';
+        return "Carrito |" +
+                " id: " + id +
+                " | color: " + color +
+                " | marca: " + marca +
+                " | numPuertas: " + numPuertas +
+                " |";
     }
 }
