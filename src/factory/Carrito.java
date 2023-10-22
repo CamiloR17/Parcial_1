@@ -5,9 +5,9 @@ import src.singleton.Menu;
 public class Carrito implements Juguete{
 
     private Integer id;
-    private String color;
-    private String marca;
-    private String numPuertas;
+    private final String color;
+    private final String marca;
+    private final String numPuertas;
 
     public Carrito(Integer id, String color, String marca, String numPuertas) {
         this.id = id;
@@ -24,21 +24,13 @@ public class Carrito implements Juguete{
     }
 
     @Override
-    public Integer getId() {
-        return this.id;
+    public Carrito clone() {
+        return new Carrito(this);
     }
 
     @Override
-    public String getColor() {
-        return this.color;
-    }
-
-    public String getMarca() {
-        return this.marca;
-    }
-
-    public String getNumPuertas() {
-        return this.numPuertas;
+    public Integer getId() {
+        return this.id;
     }
 
     @Override
@@ -47,8 +39,17 @@ public class Carrito implements Juguete{
     }
 
     @Override
-    public Carrito clone() {
-        return new Carrito(this);
+    public String getColor() {
+        return this.color;
+    }
+
+    @Override
+    public Integer getType() {
+        return 1;
+    }
+
+    public String getNumberDoors() {
+        return this.numPuertas;
     }
 
     public static CarritoBuilder builder() {return new CarritoBuilder();}

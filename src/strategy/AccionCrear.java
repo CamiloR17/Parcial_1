@@ -19,29 +19,26 @@ public class AccionCrear implements Accion{
         System.out.println("\n\t   ---------------------");
         System.out.println("\t\tCREACIÓN DE JUGUETES\n");
 
-        int tipoJuguete;
+        int tipoJuguete = 0;
         do {
             try {
                 tipoJuguete = KeyBoard.Int("[1] -> Carrito   |   [2] -> Peluche\n  ");
+
+                if (tipoJuguete < 1 || tipoJuguete > 2) System.out.println("\n\t\t * Tipo desconocido *");
             }catch (InputMismatchException e) {
                 System.out.println("\n\t\t * ERROR - Digite un numero *\n");
-                continue;
             }
-            break;
-        }while (true);
+        }while (tipoJuguete < 1 || tipoJuguete > 2);
 
         System.out.println();
+
+        Juguete juguete;
         if (tipoJuguete == 1) {
-            Juguete juguete = crearJuguete(creadorJugueteC);
-
-            Menu.getJugetes().add(juguete);
-        } else if (tipoJuguete == 2) {
-            Juguete juguete = crearJuguete(creadorJugueteP);
-
-            Menu.getJugetes().add(juguete);
-        }else {
-            System.out.println("\n\t\t * Opción desconocida *  ");
+            juguete = crearJuguete(creadorJugueteC);
+        } else {
+            juguete = crearJuguete(creadorJugueteP);
         }
+        Menu.getJugetes().add(juguete);
 
 
     }

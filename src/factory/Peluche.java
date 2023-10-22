@@ -5,9 +5,9 @@ import src.singleton.Menu;
 public class Peluche implements Juguete{
 
     private Integer id;
-    private String color;
-    private String materiaExterior;
-    private String relleno;
+    private final String color;
+    private final String materiaExterior;
+    private final String relleno;
 
     public Peluche(Integer id, String color, String materiaExterior, String relleno) {
         this.id = id;
@@ -23,9 +23,18 @@ public class Peluche implements Juguete{
         this.relleno = peluche.relleno;
     }
 
+    public Peluche clone() {
+        return new Peluche(this);
+    }
+
     @Override
     public Integer getId() {
         return this.id;
+    }
+
+    @Override
+    public void setId(Integer index) {
+        this.id = index;
     }
 
     @Override
@@ -33,21 +42,9 @@ public class Peluche implements Juguete{
         return this.color;
     }
 
-    public String getMaterialExterior() {
-        return this.materiaExterior;
-    }
-
-    public String getRelleno() {
-        return this.relleno;
-    }
-
-    public Peluche clone() {
-        return new Peluche(this);
-    }
-
     @Override
-    public void setId(Integer index) {
-        this.id = index;
+    public Integer getType() {
+        return 2;
     }
 
     public static Peluche.PelucheBuilder builder() {return new Peluche.PelucheBuilder();}

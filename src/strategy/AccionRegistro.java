@@ -9,9 +9,10 @@ public class AccionRegistro implements Accion{
         System.out.println("\n\t   ----------------------");
         System.out.println("\t\tREGISTRO DE JUGUETES\n");
 
-        for (Juguete juguete: Menu.getJugetes()) {
+        for (Juguete juguete : Menu.getJugetes()) {
             System.out.println(juguete);
         }
+        System.out.println();
     }
 
     @Override
